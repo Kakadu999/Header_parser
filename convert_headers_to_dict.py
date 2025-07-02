@@ -1,8 +1,5 @@
-
-#Need to convert this
-
 raw = '''GET / HTTP/2
-Host: 0aa7000604b495e3816f48d500520006.web-security-academy.net
+Host: XXXXXXXXXXXXXX.net
 Cookie: session=RBK6LA1OBwJWHJSgDUGrxl8KZvkgUpy4; TrackingId=zlYgnQS6xT5BcFIE
 Cache-Control: max-age=0
 Sec-Ch-Ua: "Brave";v="137", "Chromium";v="137", "Not/A)Brand";v="24"
