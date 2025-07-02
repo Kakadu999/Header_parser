@@ -1,6 +1,8 @@
-# Packet captured with Burp
+
+#Need to convert this
+
 raw = '''GET / HTTP/2
-Host: XXXXXXXXXXXX.net
+Host: 0aa7000604b495e3816f48d500520006.web-security-academy.net
 Cookie: session=RBK6LA1OBwJWHJSgDUGrxl8KZvkgUpy4; TrackingId=zlYgnQS6xT5BcFIE
 Cache-Control: max-age=0
 Sec-Ch-Ua: "Brave";v="137", "Chromium";v="137", "Not/A)Brand";v="24"
@@ -19,6 +21,23 @@ Referer: https://portswigger.net/
 Accept-Encoding: gzip, deflate, br
 Priority: u=0, i
 '''
+
+# Return Method, route, http ver and headers, convert Cookies to list
+def convert_3(_raw : str) -> list:
+	c = []
+	b = {}
+	for i in _raw.splitlines():
+		try :
+			splitted = i.split(':')
+			b[splitted[0].strip()] = splitted[1].strip()
+		except:
+			c.append(i.split(" "))
+
+	b['Cookie'] = [i.strip().split('=') for i in b['Cookie'].split(';')]
+	c.append(b)
+
+	return c
+
 
 # Return Method, route, http ver and headers
 def convert_2(_raw : str) -> list:
@@ -47,7 +66,6 @@ def convert(_raw : str) -> dict:
 
 	return b
 
-# Self Test
 if __name__ == "__main__" : 
 	b = convert(raw)
 	for i, y in zip(b, b.values()):
